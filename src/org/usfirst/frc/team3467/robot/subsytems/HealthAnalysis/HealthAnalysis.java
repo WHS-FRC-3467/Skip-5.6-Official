@@ -5,6 +5,7 @@ import org.usfirst.frc.team3467.robot.commands.CommandBase;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 
 public class HealthAnalysis {
+<<<<<<< HEAD
 private PowerDistributionPanel health = CommandBase.brownout.getPDP();
 
 	double shooterCurrent;
@@ -23,3 +24,7 @@ private PowerDistributionPanel health = CommandBase.brownout.getPDP();
 		
 	}
 }
+=======
+//private PowerDistributionPanel health = CommandBase.brownout.getpdp();
+}
+>>>>>>> refs/remotes/WHS-FRC-3467/master
