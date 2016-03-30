@@ -123,14 +123,15 @@ public class DriveBase extends Subsystem implements PowerConsumer {
 				leftTalon.changeControlMode(TalonControlMode.PercentVbus);
 				rightTalon.changeControlMode(TalonControlMode.PercentVbus);
 				
+
+
+				t_controlMode = TalonControlMode.PercentVbus;
+		}			
 				// Extra CIMs are slaves
 				setSlaveMode(true);
 				
 				// Brakes are off
 				setTalonBrakes(false);
-
-				t_controlMode = TalonControlMode.PercentVbus;
-		}
 		// Don't need to invert because the sticks give negative values
 		// in the forward direction
 		leftTalon.setInverted(false);
@@ -194,12 +195,12 @@ public class DriveBase extends Subsystem implements PowerConsumer {
 	
 	// return the distance driven (average of left and right encoders).
 	public double getDistance() {
-		return ((leftTalon.getPosition()) + (rightTalon.getPosition()))/2;
+		return ((leftTalon.getPosition()) + (rightTalon.getPosition() * -1.0))/2;
 	}
 
 	public void reportEncoders() {
 		SmartDashboard.putNumber("Left Encoder", leftTalon.getPosition());
-		SmartDashboard.putNumber("Right Encoder", rightTalon.getPosition());			
+		SmartDashboard.putNumber("Right Encoder", rightTalon.getPosition() * -1.0);			
 	}
 
 	public void resetEncoders() {
