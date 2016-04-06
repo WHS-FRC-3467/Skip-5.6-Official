@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3467.robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -98,7 +99,7 @@ public class OI {
 		}
 		
 		
-	//Interupts the previous command
+	//Interrupts the previous command
 		//new JoystickButton(operator, Gamepad.leftBumper);
 		
 		
@@ -114,34 +115,38 @@ public class OI {
 		.whenPressed(new AutoTarget());
 		
 	//Intake
-		//Eject Slow
+		//Intake Up
 		new JoystickButton(operator, Gamepad.xButton)
-			.whileHeld(new IntakeDrive(Intake.kEjectSlow));
+			.whenPressed(new Roller_Actuate(false));
 		
 		//Eject Fast
 		new JoystickButton(operator, Gamepad.yButton)
 			.whileHeld(new IntakeDrive(Intake.kEjectFast));
 		
-		//Intake Slow
+		//Intake Down
 		new JoystickButton(operator, Gamepad.aButton)
-			.whileHeld(new IntakeDrive(Intake.kIntakeSlow));
+			.whenPressed(new Roller_Actuate(true));
 		
 		//Intake Fast
 		new JoystickButton(operator, Gamepad.bButton)
 			.whileHeld(new IntakeDrive(Intake.kIntakeFast));
 		
 		//Intake Extend
-		new JoystickButton(SecondaryStick, 1)
+		/*new JoystickButton(SecondaryStick, 1)
 		.whenPressed(new Roller_Actuate(true));
 		
 		new JoystickButton(SecondaryStick, 2)
 		.whenPressed(new Roller_Actuate(false));
-		
+		*/
 	
 	//Catapult
-		// Halt Reset Bar PID and switch to manual mode
+		// Utility bar actuate
 		new JoystickButton(operator, Gamepad.rightTrigger_Axis)
-			.whileHeld(new ShooterReset());
+			.whenPressed(new Bar_actuate(UtilityBar.kIn));
+		
+		//Utility bar in
+		new JoystickButton(operator, Gamepad.leftTrigger_Axis)
+			.whenPressed(new Bar_actuate(UtilityBar.kOut));
 		
 		//Reload Catapult
 		new JoystickButton(operator, Gamepad.leftBumper)

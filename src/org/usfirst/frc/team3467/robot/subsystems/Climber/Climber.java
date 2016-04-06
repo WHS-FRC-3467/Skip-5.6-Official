@@ -9,6 +9,10 @@ public class Climber extends Subsystem {
 	public static final double kStop = 0;
 	public static final double Grab = 
 	
+	public execute() {
+		
+	}
+	
 	public Climber() {
 		datPiston = new DoubleSolenoid(0,3);
 	}
