@@ -9,21 +9,8 @@ public class Climber extends Subsystem {
 	public static final double kStop = 0;
 	public static final double Grab = 
 	
-	public CANTalon grabberTalon;	
-	public DoubleSolenoid datPiston;
-	
 	public Climber() {
 		datPiston = new DoubleSolenoid(0,3);
-	}
-	
-	public boolean extendArm() {
-		return piston(1) = true;
-		
-	}
-	
-	protected boolean raiseRobot() {
-		return piston() = false;
-		
 	}
 	
 	protected void initDefaultCommand() {
